@@ -38,7 +38,8 @@ button {
 }
 
 main,
-footer {
+footer,
+.fellowship {
   width: min(100% - 32px, 920px);
   margin-inline: auto;
 }
@@ -143,6 +144,127 @@ h1 {
 .enter-link img {
   width: 31px;
   height: 31px;
+}
+
+.fellowship {
+  padding: 56px 0 18px;
+  scroll-margin-top: 12px;
+}
+
+.fellowship-heading {
+  max-width: 34rem;
+  margin-bottom: 24px;
+}
+
+.fellowship-heading h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 8vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.fellowship-heading > p:last-child {
+  margin: 10px 0 0;
+  color: var(--mist);
+  font-family: var(--font-serif);
+  line-height: 1.5;
+}
+
+.character-reel {
+  display: grid;
+  grid-auto-columns: min(76vw, 300px);
+  grid-auto-flow: column;
+  gap: 12px;
+  margin-inline: -16px;
+  padding: 0 16px 18px;
+  overflow-x: auto;
+  scroll-padding-inline: 16px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.character-reel::-webkit-scrollbar {
+  display: none;
+}
+
+.character-card {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.34);
+  scroll-snap-align: start;
+}
+
+.character-card::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 42%, rgba(5, 7, 12, 0.5) 64%, rgba(5, 7, 12, 0.98) 100%),
+    linear-gradient(110deg, rgba(119, 196, 215, 0.08), transparent 36%);
+  content: "";
+}
+
+.character-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.72) contrast(1.06);
+}
+
+.character-card-emet img,
+.character-card-hythlodaeus img {
+  object-position: center 8%;
+}
+
+.character-card-aymeric img {
+  object-position: center 10%;
+}
+
+.character-card-estinien img {
+  object-position: center 5%;
+}
+
+.character-copy {
+  position: absolute;
+  right: 18px;
+  bottom: 20px;
+  left: 18px;
+  z-index: 1;
+}
+
+.character-copy p {
+  margin: 0 0 4px;
+  color: var(--aether);
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.character-copy h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 7vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.character-copy span {
+  display: block;
+  margin-top: 8px;
+  color: var(--mist);
+  font-family: var(--font-serif);
+  line-height: 1.35;
 }
 
 main {
@@ -312,6 +434,35 @@ main {
   filter: drop-shadow(0 3px 5px #000);
 }
 
+.idea-patron {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 3px 10px 3px 3px;
+  border: 1px solid rgba(242, 216, 152, 0.44);
+  border-radius: 999px;
+  color: var(--ivory);
+  background: rgba(8, 11, 19, 0.82);
+  font-family: var(--font-display);
+  font-size: 0.57rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  backdrop-filter: blur(7px);
+}
+
+.idea-patron img {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 14%;
+}
+
 .idea-body {
   position: relative;
   padding: 14px 16px 18px;
@@ -433,6 +584,34 @@ footer > img {
     padding-bottom: 76px;
   }
 
+  .character-reel {
+    grid-auto-columns: unset;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: visible;
+  }
+
+  .character-card,
+  .character-card img {
+    min-height: 390px;
+  }
+
+  .character-copy {
+    right: 12px;
+    bottom: 16px;
+    left: 12px;
+  }
+
+  .character-copy h3 {
+    font-size: clamp(1rem, 2vw, 1.45rem);
+  }
+
+  .character-copy span {
+    font-size: 0.84rem;
+  }
+
   .idea-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -453,7 +632,8 @@ footer > img {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .idea-card {
+  .idea-card,
+  .character-card {
     animation: arrive 420ms ease both;
   }
 

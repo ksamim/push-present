@@ -8,6 +8,8 @@ const ideas = [
     image:
       "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=85",
     icon: "glamour_plate.png",
+    patron: "Emet-Selch",
+    patronImage: "emet-selch.jpg",
   },
   {
     id: "initial-necklace",
@@ -18,6 +20,8 @@ const ideas = [
     image:
       "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=85",
     icon: "glamour_plate.png",
+    patron: "Hythlodaeus",
+    patronImage: "hythlodaeus.jpg",
   },
   {
     id: "keepsake-box",
@@ -28,6 +32,8 @@ const ideas = [
     image:
       "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=1200&q=85",
     icon: "inventory.png",
+    patron: "G'raha Tia",
+    patronImage: "graha-tia.jpg",
   },
   {
     id: "engraved-bracelet",
@@ -38,6 +44,8 @@ const ideas = [
     image:
       "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1200&q=85",
     icon: "achievements.png",
+    patron: "Aymeric",
+    patronImage: "aymeric.jpg",
   },
   {
     id: "portrait-session",
@@ -48,6 +56,8 @@ const ideas = [
     image:
       "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=85",
     icon: "journal.png",
+    patron: "Hythlodaeus",
+    patronImage: "hythlodaeus.jpg",
   },
   {
     id: "spa-retreat",
@@ -58,6 +68,8 @@ const ideas = [
     image:
       "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=85",
     icon: "recommendations.png",
+    patron: "Estinien",
+    patronImage: "estinien.jpg",
   },
 ];
 
@@ -98,6 +110,10 @@ function render() {
         <article class="idea-card">
           <div class="idea-image-wrap">
             <img class="idea-image" src="${idea.image}" alt="${idea.title}" />
+            <div class="idea-patron">
+              <img src="assets/ffxiv/${idea.patronImage}" alt="" />
+              <span>${idea.patron}'s pick</span>
+            </div>
             <img class="idea-icon" src="assets/ffxiv/${idea.icon}" alt="" />
           </div>
           <div class="idea-body">

@@ -28,6 +28,9 @@ from the repository root without a build step.
 - `app.js`: ideas, filters, and device-local saved choices
 - `assets/ffxiv/`: official FINAL FANTASY XIV Fan Kit materials
 
+Character portraits are unmodified in-game materials sourced through the Final
+Fantasy XIV Console Games Wiki. All game materials remain © SQUARE ENIX.
+
 Saved choices use browser local storage and remain on the device where they were
 selected. The Share button sends the current shortlist through the device share
 sheet. Cross-device automatic syncing requires an external data service.
