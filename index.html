@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f2ea" />
+    <meta
+      name="description"
+      content="A private-feeling shortlist for browsing push present ideas."
+    />
+    <title>Push Present</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="eyebrow">A little something to remember this by</p>
+      <h1>Push Present</h1>
+      <p class="intro">Browse ideas and save the ones that feel right.</p>
+    </header>
+
+    <main>
+      <nav class="filters" aria-label="Filter present ideas">
+        <button class="filter is-active" type="button" data-filter="all">All</button>
+        <button class="filter" type="button" data-filter="jewelry">Jewelry</button>
+        <button class="filter" type="button" data-filter="keepsake">Keepsakes</button>
+        <button class="filter" type="button" data-filter="saved">Saved</button>
+      </nav>
+
+      <p class="results-label" id="results-label" aria-live="polite"></p>
+      <section class="idea-grid" id="idea-grid" aria-label="Present ideas"></section>
+    </main>
+
+    <footer>
+      <p>Made for our next chapter.</p>
+    </footer>
+  </body>
+</html>
