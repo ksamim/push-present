@@ -3,42 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7f2ea" />
+    <meta name="theme-color" content="#080b13" />
     <meta
       name="description"
-      content="A private-feeling shortlist for browsing push present ideas."
+      content="Alex's Eorzean-inspired push present shortlist."
     />
-    <title>Push Present</title>
+    <title>Alex's Gift of Light</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Marcellus&family=Source+Sans+3:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
   </head>
   <body>
-    <header class="site-header">
-      <p class="eyebrow">A little something to remember this by</p>
-      <h1>Push Present</h1>
-      <p class="intro">Browse ideas and save the ones that feel right.</p>
+    <header class="hero">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <div class="realm-mark" aria-hidden="true">
+          <span></span>
+          <img src="assets/ffxiv/limit_break.png" alt="" />
+          <span></span>
+        </div>
+        <p class="eyebrow">A new quest begins</p>
+        <h1>Alex's Gift<br />of Light</h1>
+        <p class="intro">A collection of treasures for the journey ahead.</p>
+        <a class="enter-link" href="#collection">
+          <img src="assets/ffxiv/journal.png" alt="" />
+          View the collection
+        </a>
+      </div>
     </header>
 
-    <main>
+    <main id="collection">
+      <section class="collection-heading">
+        <div>
+          <p class="section-kicker">The treasure coffer</p>
+          <h2>Choose your reward</h2>
+        </div>
+        <button class="share-button" id="share-button" type="button">
+          <img src="assets/ffxiv/teleport.png" alt="" />
+          <span>Share</span>
+        </button>
+      </section>
+
       <nav class="filters" aria-label="Filter present ideas">
-        <button class="filter is-active" type="button" data-filter="all">All</button>
-        <button class="filter" type="button" data-filter="jewelry">Jewelry</button>
-        <button class="filter" type="button" data-filter="keepsake">Keepsakes</button>
-        <button class="filter" type="button" data-filter="saved">Saved</button>
+        <button class="filter is-active" type="button" data-filter="all">
+          <img src="assets/ffxiv/inventory.png" alt="" /> All
+        </button>
+        <button class="filter" type="button" data-filter="jewelry">
+          <img src="assets/ffxiv/glamour_plate.png" alt="" /> Adornments
+        </button>
+        <button class="filter" type="button" data-filter="keepsake">
+          <img src="assets/ffxiv/achievements.png" alt="" /> Keepsakes
+        </button>
+        <button class="filter" type="button" data-filter="comfort">
+          <img src="assets/ffxiv/recommendations.png" alt="" /> Comforts
+        </button>
+        <button class="filter" type="button" data-filter="saved">
+          <img src="assets/ffxiv/limit_break.png" alt="" /> Chosen
+        </button>
       </nav>
 
-      <p class="results-label" id="results-label" aria-live="polite"></p>
+      <div class="collection-status">
+        <span class="status-rule"></span>
+        <p id="results-label" aria-live="polite"></p>
+        <span class="status-rule"></span>
+      </div>
       <section class="idea-grid" id="idea-grid" aria-label="Present ideas"></section>
     </main>
 
     <footer>
-      <p>Made for our next chapter.</p>
+      <img src="assets/ffxiv/limit_break.png" alt="" />
+      <p class="footer-dedication">For the greatest adventure yet.</p>
+      <p class="legal">
+        FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.<br />
+        FINAL FANTASY XIV materials © SQUARE ENIX
+      </p>
     </footer>
   </body>
 </html>

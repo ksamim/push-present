@@ -1,6 +1,6 @@
 # Push Present
 
-A mobile static site for browsing and saving push present ideas.
+A mobile FFXIV-inspired static site for browsing and saving push present ideas.
 
 ## Contents
 
@@ -26,3 +26,11 @@ from the repository root without a build step.
 - `index.html`: page structure
 - `styles.css`: mobile-first design
 - `app.js`: ideas, filters, and device-local saved choices
+- `assets/ffxiv/`: official FINAL FANTASY XIV Fan Kit materials
+
+Saved choices use browser local storage and remain on the device where they were
+selected. The Share button sends the current shortlist through the device share
+sheet. Cross-device automatic syncing requires an external data service.
+
+FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.
+FINAL FANTASY XIV materials © SQUARE ENIX.
