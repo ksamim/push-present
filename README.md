@@ -54,7 +54,7 @@ original device.
 ## Project files
 
 - `index.html`: page structure
-- `styles.css`: mobile-first design
+- `app-layout.css`: mobile-first vertical chapter and horizontal carousel layout
 - `product-data.js`: researched product categories and purchase links
 - `app.js`: swipe decks, sharing, and synchronized category choices
 - `supabase-config.js`: public browser connection settings
