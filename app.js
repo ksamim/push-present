@@ -7,6 +7,13 @@ const categoryNav = document.querySelector("#category-nav");
 const categoryDecks = document.querySelector("#category-decks");
 const shareButton = document.querySelector("#share-button");
 const selectedProducts = new Set();
+const categoryArt = [
+  "emet-selch.webp",
+  "graha-tia.webp",
+  "aymeric.webp",
+  "estinien.webp",
+  "hythlodaeus.webp",
+];
 let syncCredentials = null;
 let syncTimer = null;
 
@@ -86,23 +93,29 @@ function render() {
     .join("");
 
   categoryDecks.innerHTML = categories
-    .map((category) => {
+    .map((category, categoryIndex) => {
       const options = categoryProducts(category.id);
       const selected = options.find((product) => selectedProducts.has(product.id));
       return `
-        <section class="category-section" id="category-${category.id}">
-          <header class="category-header">
-            <div>
-              <p class="section-kicker">${category.subtitle}</p>
-              <h2>${category.title}</h2>
+        <section
+          class="category-section"
+          id="category-${category.id}"
+          style="--category-art: url('assets/art/${categoryArt[categoryIndex % categoryArt.length]}')"
+        >
+          <div class="category-content">
+            <header class="category-header">
+              <div>
+                <p class="section-kicker">${category.subtitle}</p>
+                <h2>${category.title}</h2>
+              </div>
+              <span class="category-choice" data-category-choice="${category.id}">
+                ${selected ? "1 chosen" : "Choose 1"}
+              </span>
+            </header>
+            <p class="category-note">${category.note}</p>
+            <div class="product-reel" aria-label="${category.title} options">
+              ${options.map((product, index) => renderProduct(product, index, options.length)).join("")}
             </div>
-            <span class="category-choice" data-category-choice="${category.id}">
-              ${selected ? "1 chosen" : "Choose 1"}
-            </span>
-          </header>
-          <p class="category-note">${category.note}</p>
-          <div class="product-reel" aria-label="${category.title} options">
-            ${options.map((product, index) => renderProduct(product, index, options.length)).join("")}
           </div>
         </section>
       `;

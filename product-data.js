@@ -299,7 +299,7 @@ window.PUSH_PRESENT_PRODUCTS = [
     badge: "Best Lulu Prissypants pick",
     note: "The artist draws Lulu from references and sends a digital mockup for approval before producing the mat.",
     specs: ["Original character art", "Proof before production", "Limited slots"],
-    image: "assets/art/lulu-prissypants.jpg",
+    image: "assets/art/lulu-prissypants-presenting.png",
     url: "https://www.etsy.com/listing/4333426431/custom-character-desk-mat-hand-drawn",
   },
   {
