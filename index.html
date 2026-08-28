@@ -36,30 +36,19 @@
         <p class="eyebrow">Lulu Prissypants' wishlist</p>
         <h1>Choose Your<br />Loot</h1>
         <p class="intro">Scroll down for each category. Swipe sideways to compare the loot.</p>
-        <a class="enter-link" href="#collection">
-          <img src="assets/ffxiv/journal.png" alt="" />
-          Browse her options
-        </a>
+        <div class="hero-actions">
+          <a class="enter-link" href="#category-milk-fridge">
+            <img src="assets/ffxiv/journal.png" alt="" />
+            Browse her options
+          </a>
+          <button class="share-button" id="share-button" type="button" aria-label="Share Lulu's shortlist">
+            <img src="assets/ffxiv/teleport.png" alt="" />
+          </button>
+        </div>
       </div>
     </header>
 
     <main id="collection">
-      <section class="collection-heading">
-        <div>
-          <p class="section-kicker">Research complete</p>
-          <h2>Lulu's shortlist</h2>
-        </div>
-        <button class="share-button" id="share-button" type="button">
-          <img src="assets/ffxiv/teleport.png" alt="" />
-          <span>Share</span>
-        </button>
-      </section>
-
-      <div class="research-note">
-        <img src="assets/ffxiv/journal.png" alt="" />
-        <p>Scroll down for a new category. Swipe left or right to compare, then choose one winner.</p>
-      </div>
-
       <nav class="filters" id="category-nav" aria-label="Jump to a gift category"></nav>
       <section class="category-decks" id="category-decks" aria-label="Gift options"></section>
     </main>

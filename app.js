@@ -121,6 +121,27 @@ function render() {
       `;
     })
     .join("");
+
+  initializeCategoryMotion();
+}
+
+function initializeCategoryMotion() {
+  const sections = document.querySelectorAll(".category-section");
+  if (!("IntersectionObserver" in window)) {
+    sections.forEach((section) => section.classList.add("is-active"));
+    return;
+  }
+
+  document.documentElement.classList.add("has-motion");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("is-active", entry.isIntersecting);
+      });
+    },
+    { threshold: 0.55 },
+  );
+  sections.forEach((section) => observer.observe(section));
 }
 
 function updateCategorySelection(categoryId) {
