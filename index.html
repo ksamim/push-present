@@ -6,9 +6,9 @@
     <meta name="theme-color" content="#080b13" />
     <meta
       name="description"
-      content="Alex's Eorzean-inspired push present shortlist."
+      content="Lulu Prissypants' researched push present shortlist."
     />
-    <title>Alex's Gift of Light</title>
+    <title>Lulu Prissypants' Gift of Light</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="supabase-config.js"></script>
+    <script src="product-data.js"></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -28,9 +29,9 @@
           <img src="assets/ffxiv/limit_break.png" alt="" />
           <span></span>
         </div>
-        <p class="eyebrow">A new quest begins</p>
-        <h1>Alex's Gift<br />of Light</h1>
-        <p class="intro">A collection of treasures for the journey ahead.</p>
+        <p class="eyebrow">Lulu Prissypants' wishlist</p>
+        <h1>Choose Your<br />Loot</h1>
+        <p class="intro">Swipe the researched options. Pick one favorite in each category.</p>
         <a class="enter-link" href="#collection">
           <img src="assets/ffxiv/journal.png" alt="" />
           Browse her options
@@ -48,8 +49,8 @@
       </div>
       <section class="collection-heading">
         <div>
-          <p class="section-kicker">Build the wishlist</p>
-          <h2>Choose your favorites</h2>
+          <p class="section-kicker">Research complete</p>
+          <h2>Lulu's shortlist</h2>
         </div>
         <button class="share-button" id="share-button" type="button">
           <img src="assets/ffxiv/teleport.png" alt="" />
@@ -57,33 +58,13 @@
         </button>
       </section>
 
-      <nav class="filters" aria-label="Filter present ideas">
-        <button class="filter is-active" type="button" data-filter="all">
-          <img src="assets/ffxiv/inventory.png" alt="" /> All
-        </button>
-        <button class="filter" type="button" data-filter="wall-art">
-          <img src="assets/ffxiv/glamour_plate.png" alt="" /> Wall art
-        </button>
-        <button class="filter" type="button" data-filter="office-tech">
-          <img src="assets/ffxiv/limit_break.png" alt="" /> Desk tech
-        </button>
-        <button class="filter" type="button" data-filter="office-furniture">
-          <img src="assets/ffxiv/recommendations.png" alt="" /> Furniture
-        </button>
-        <button class="filter" type="button" data-filter="appliance">
-          <img src="assets/ffxiv/currency.png" alt="" /> Office fridge
-        </button>
-        <button class="filter" type="button" data-filter="saved">
-          <img src="assets/ffxiv/limit_break.png" alt="" /> Chosen
-        </button>
-      </nav>
-
-      <div class="collection-status">
-        <span class="status-rule"></span>
-        <p id="results-label" aria-live="polite"></p>
-        <span class="status-rule"></span>
+      <div class="research-note">
+        <img src="assets/ffxiv/journal.png" alt="" />
+        <p>Each row is one gift category. Swipe sideways, open the product page, then choose one winner.</p>
       </div>
-      <section class="idea-grid" id="idea-grid" aria-label="Present ideas"></section>
+
+      <nav class="filters" id="category-nav" aria-label="Jump to a gift category"></nav>
+      <section class="category-decks" id="category-decks" aria-label="Gift options"></section>
     </main>
 
     <footer>
