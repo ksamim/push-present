@@ -81,16 +81,10 @@ function renderProduct(product, index, total) {
 }
 
 function renderCarousel(options, categoryTitle) {
-  const slides = options
-    .map(
-      (product, index) =>
-        `<div class="product-slide">${renderProduct(product, index, options.length)}</div>`,
-    )
-    .join("");
   return `
-    <div class="carousel-shell">
-      <div class="product-reel" aria-label="${categoryTitle} options">
-        <div class="product-track">${slides}</div>
+    <div class="carousel-shell" data-carousel-category="${options[0].category}">
+      <div class="product-reel" aria-label="${categoryTitle} options" aria-live="polite">
+        ${renderProduct(options[0], 0, options.length)}
       </div>
       <div class="carousel-controls">
         <button class="carousel-button" type="button" data-carousel-step="-1" aria-label="Previous option">‹</button>
@@ -142,38 +136,41 @@ function render() {
     .join("");
 
   initializeCategoryMotion();
-  initializeCarouselLoops();
+  initializeCarousels();
 }
 
-function initializeCarouselLoops() {
+function initializeCarousels() {
   document.querySelectorAll(".carousel-shell").forEach((carousel) => {
-    const track = carousel.querySelector(".product-track");
-    const slides = [...track.children];
+    const reel = carousel.querySelector(".product-reel");
     const status = carousel.querySelector(".carousel-status");
+    const options = categoryProducts(carousel.dataset.carouselCategory);
     let index = 0;
     let startX = null;
 
     const show = (nextIndex) => {
-      index = (nextIndex + slides.length) % slides.length;
-      track.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
-      status.textContent = `${index + 1} / ${slides.length}`;
+      index = (nextIndex + options.length) % options.length;
+      reel.innerHTML = renderProduct(options[index], index, options.length);
+      status.textContent = `${index + 1} / ${options.length}`;
     };
 
     carousel.addEventListener("click", (event) => {
       const button = event.target.closest("[data-carousel-step]");
       if (button) show(index + Number(button.dataset.carouselStep));
     });
-    track.addEventListener("pointerdown", (event) => {
-      startX = event.clientX;
-      track.setPointerCapture(event.pointerId);
+    carousel.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") show(index - 1);
+      if (event.key === "ArrowRight") show(index + 1);
     });
-    track.addEventListener("pointerup", (event) => {
+    reel.addEventListener("touchstart", (event) => {
+      startX = event.changedTouches[0].clientX;
+    }, { passive: true });
+    reel.addEventListener("touchend", (event) => {
       if (startX === null) return;
-      const distance = event.clientX - startX;
+      const distance = event.changedTouches[0].clientX - startX;
       startX = null;
       if (Math.abs(distance) >= 45) show(index + (distance < 0 ? 1 : -1));
-    });
-    track.addEventListener("pointercancel", () => {
+    }, { passive: true });
+    reel.addEventListener("touchcancel", () => {
       startX = null;
     });
   });
@@ -210,6 +207,7 @@ function updateCategorySelection(categoryId) {
     const card = document.querySelector(`[data-product-id="${product.id}"]`);
     const button = document.querySelector(`[data-choose-product="${product.id}"]`);
     const isSelected = selectedProducts.has(product.id);
+    if (!card || !button) return;
     card.classList.toggle("is-selected", isSelected);
     button.setAttribute("aria-pressed", String(isSelected));
     button.querySelector("span").textContent = isSelected ? "Lulu's pick" : "Choose";
