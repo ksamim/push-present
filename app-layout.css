@@ -346,24 +346,27 @@ main {
 }
 
 .product-reel {
-  display: flex;
-  gap: 14px;
   width: 100%;
   min-width: 0;
   margin: 0;
-  padding: 0 0 10px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  touch-action: pan-x pan-y;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.carousel-shell {
+  width: min(100%, 390px);
+}
+
+.product-track {
+  display: flex;
+  width: 100%;
+  transition: transform 320ms cubic-bezier(0.22, 0.75, 0.25, 1);
+  will-change: transform;
 }
 
 .product-slide {
-  flex: 0 0 clamp(300px, 32vw, 360px);
+  flex: 0 0 100%;
   min-width: 0;
-  scroll-snap-align: start;
 }
 
 .product-card {
@@ -381,6 +384,37 @@ main {
   box-shadow: inset 0 0 0 1px rgba(242, 216, 152, 0.18), 0 18px 44px rgba(0, 0, 0, 0.38);
 }
 
+.carousel-controls {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.carousel-button {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--gold-bright);
+  background: rgba(16, 21, 33, 0.96);
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.carousel-status {
+  color: var(--muted);
+  font-family: var(--display);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+
 .product-image-wrap {
   position: relative;
   overflow: hidden;
@@ -393,6 +427,16 @@ main {
   height: clamp(190px, 23vw, 260px);
   object-fit: contain;
   background: #eef0f3;
+}
+
+.product-image--pending {
+  display: grid;
+  place-items: center;
+  color: #555b68;
+  font-family: var(--display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .product-image-wrap::after {
@@ -679,12 +723,7 @@ main {
   }
 
   .product-reel {
-    gap: 10px;
-    scroll-padding-inline: 0;
-  }
-
-  .product-slide {
-    flex-basis: 100%;
+    width: 100%;
   }
 
   .product-image {

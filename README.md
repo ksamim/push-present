@@ -27,7 +27,7 @@ from the repository root without a build step.
 
 ## Product catalog
 
-The catalog contains 30 purchase candidates across eight categories. Each
+The catalog contains 20 purchase candidates across six categories. Each
 category renders as a horizontal swipe deck with product photos, current prices,
 specifications, research notes, and direct retailer or maker links. Prices and
 availability were researched on August 27, 2026, and may change.

@@ -44,13 +44,13 @@ function categoryProducts(categoryId) {
   return products.filter((product) => product.category === categoryId);
 }
 
-function renderProduct(product, index, total, interactive = true) {
+function renderProduct(product, index, total) {
   const selected = selectedProducts.has(product.id);
   const specs = product.specs.map((spec) => `<li>${spec}</li>`).join("");
   return `
-    <article class="product-card${selected ? " is-selected" : ""}"${interactive ? ` data-product-id="${product.id}"` : ""}>
+    <article class="product-card${selected ? " is-selected" : ""}" data-product-id="${product.id}">
       <div class="product-image-wrap">
-        <img class="product-image" src="${product.image}" alt="${product.title}" />
+        ${product.image ? `<img class="product-image" src="${product.image}" alt="${product.title}" />` : `<div class="product-image product-image--pending"><span>Product image pending</span></div>`}
         <span class="product-position">${index + 1} / ${total}</span>
         ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ""}
       </div>
@@ -64,11 +64,11 @@ function renderProduct(product, index, total, interactive = true) {
         <p class="product-note">${product.note}</p>
         <ul class="product-specs">${specs}</ul>
         <div class="product-actions">
-          <a href="${product.url}" target="_blank" rel="noopener noreferrer"${interactive ? "" : ' tabindex="-1"'}>View product</a>
+          <a href="${product.url}" target="_blank" rel="noopener noreferrer">View product</a>
           <button
             class="choose-button"
             type="button"
-            ${interactive ? `data-choose-product="${product.id}"` : 'tabindex="-1"'}
+            data-choose-product="${product.id}"
             aria-pressed="${selected}"
           >
             <img src="assets/ffxiv/limit_break.png" alt="" />
@@ -80,16 +80,25 @@ function renderProduct(product, index, total, interactive = true) {
   `;
 }
 
-function renderLoopedProducts(options) {
-  if (options.length < 2) return renderProduct(options[0], 0, 1);
-  const looped = [options.at(-1), ...options, options[0]];
-  return looped
-    .map((product, index) => {
-      const realIndex = (index - 1 + options.length) % options.length;
-      const clone = index === 0 || index === looped.length - 1;
-      return `<div class="product-slide${clone ? " is-clone" : ""}"${clone ? ' aria-hidden="true" inert' : ""}>${renderProduct(product, realIndex, options.length, !clone)}</div>`;
-    })
+function renderCarousel(options, categoryTitle) {
+  const slides = options
+    .map(
+      (product, index) =>
+        `<div class="product-slide">${renderProduct(product, index, options.length)}</div>`,
+    )
     .join("");
+  return `
+    <div class="carousel-shell">
+      <div class="product-reel" aria-label="${categoryTitle} options">
+        <div class="product-track">${slides}</div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-button" type="button" data-carousel-step="-1" aria-label="Previous option">‹</button>
+        <span class="carousel-status" aria-live="polite">1 / ${options.length}</span>
+        <button class="carousel-button" type="button" data-carousel-step="1" aria-label="Next option">›</button>
+      </div>
+    </div>
+  `;
 }
 
 function render() {
@@ -125,9 +134,7 @@ function render() {
               </span>
             </header>
             <p class="category-note">${category.note}</p>
-            <div class="product-reel" aria-label="${category.title} options">
-              ${renderLoopedProducts(options)}
-            </div>
+            ${renderCarousel(options, category.title)}
           </div>
         </section>
       `;
@@ -139,20 +146,35 @@ function render() {
 }
 
 function initializeCarouselLoops() {
-  document.querySelectorAll(".product-reel").forEach((reel) => {
-    const slides = [...reel.children];
-    if (slides.length < 3) return;
-    const firstReal = slides[1];
-    const lastReal = slides.at(-2);
-    reel.scrollLeft = firstReal.offsetLeft;
-    let settleTimer;
-    reel.addEventListener("scroll", () => {
-      window.clearTimeout(settleTimer);
-      settleTimer = window.setTimeout(() => {
-        const position = reel.scrollLeft;
-        if (position <= slides[0].offsetLeft + 2) reel.scrollLeft = lastReal.offsetLeft;
-        else if (position >= slides.at(-1).offsetLeft - 2) reel.scrollLeft = firstReal.offsetLeft;
-      }, 90);
+  document.querySelectorAll(".carousel-shell").forEach((carousel) => {
+    const track = carousel.querySelector(".product-track");
+    const slides = [...track.children];
+    const status = carousel.querySelector(".carousel-status");
+    let index = 0;
+    let startX = null;
+
+    const show = (nextIndex) => {
+      index = (nextIndex + slides.length) % slides.length;
+      track.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
+      status.textContent = `${index + 1} / ${slides.length}`;
+    };
+
+    carousel.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-carousel-step]");
+      if (button) show(index + Number(button.dataset.carouselStep));
+    });
+    track.addEventListener("pointerdown", (event) => {
+      startX = event.clientX;
+      track.setPointerCapture(event.pointerId);
+    });
+    track.addEventListener("pointerup", (event) => {
+      if (startX === null) return;
+      const distance = event.clientX - startX;
+      startX = null;
+      if (Math.abs(distance) >= 45) show(index + (distance < 0 ? 1 : -1));
+    });
+    track.addEventListener("pointercancel", () => {
+      startX = null;
     });
   });
 }
