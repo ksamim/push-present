@@ -48,6 +48,15 @@ $$;
 
 revoke all on function private.create_shortlist(text) from public, anon, authenticated;
 
+create or replace function public.create_shortlist(p_access_token text)
+returns uuid
+language sql
+security definer
+set search_path = ''
+as $$
+  select private.create_shortlist(p_access_token);
+$$;
+
 create or replace function public.get_shortlist(
   p_list_id uuid,
   p_access_token text
@@ -109,6 +118,8 @@ $$;
 
 revoke all on function public.get_shortlist(uuid, text) from public;
 revoke all on function public.set_shortlist_choice(uuid, text, text, boolean) from public;
+revoke all on function public.create_shortlist(text) from public;
 
+grant execute on function public.create_shortlist(text) to anon, authenticated;
 grant execute on function public.get_shortlist(uuid, text) to anon, authenticated;
 grant execute on function public.set_shortlist_choice(uuid, text, text, boolean) to anon, authenticated;
