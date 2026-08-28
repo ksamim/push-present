@@ -59,11 +59,13 @@ original device.
 - `app.js`: swipe decks, sharing, and synchronized category choices
 - `supabase-config.js`: public browser connection settings
 - `supabase/`: database configuration and migrations
-- `assets/ffxiv/`: official FINAL FANTASY XIV Fan Kit materials
+- `assets/ffxiv/`: official FINAL FANTASY XIV interface assets
+- `assets/art/`: Lulu's Lodestone portrait and Square Enix character artwork
 - `assets/products/`: locally hosted product images
 
-Character portraits are unmodified in-game materials sourced through the Final
-Fantasy XIV Console Games Wiki. All game materials remain © SQUARE ENIX.
+Character artwork is sourced from Square Enix materials indexed by the Final
+Fantasy Wiki. Lulu's portrait is sourced from her public Lodestone profile. All
+game materials remain © SQUARE ENIX.
 
 FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.
 FINAL FANTASY XIV materials © SQUARE ENIX.

@@ -224,7 +224,7 @@ window.PUSH_PRESENT_PRODUCTS = [
     badge: "Best Amaurot pick",
     note: "Etched Amaurot skyline on a color-changing LED beech-wood base with USB power.",
     specs: ["Color-changing LED", "Beech base", "USB powered"],
-    image: "assets/ffxiv/emet-selch.jpg",
+    image: "assets/art/emet-selch.webp",
     url: "https://www.etsy.com/listing/879191658/ffxiv-amaurot-skyline-acrylic-light",
   },
   {
@@ -237,7 +237,7 @@ window.PUSH_PRESENT_PRODUCTS = [
     badge: "Most art-like",
     note: "A landscape view of Amaurot in a framed color lithophane with built-in LED backlight and USB-C power.",
     specs: ["Color lithophane", "Built-in backlight", "USB-C"],
-    image: "assets/ffxiv/hythlodaeus.jpg",
+    image: "assets/art/hythlodaeus.webp",
     url: "https://www.etsy.com/listing/1726785478/final-fantasy-xiv-amaurot-lithophane-art",
   },
   {
@@ -250,7 +250,7 @@ window.PUSH_PRESENT_PRODUCTS = [
     badge: "Best ambient lamp",
     note: "USB-powered hexagonal Amaurot lamp with remote-controlled colors, fade, and flash modes.",
     specs: ["15 colors", "IR remote", "Desk or shelf size"],
-    image: "assets/ffxiv/hero.jpg",
+    image: "assets/art/estinien.webp",
     url: "https://www.etsy.com/listing/4311194421/amaurot-led-hexagon-lamp-color-changing",
   },
   {
@@ -262,7 +262,7 @@ window.PUSH_PRESENT_PRODUCTS = [
     rating: "Gaming room light box",
     note: "A layered FFXIV light box intended as a desk lamp, night light, or illuminated room accent.",
     specs: ["Layered light box", "Desk or wall decor", "Made to order"],
-    image: "assets/ffxiv/graha-tia.jpg",
+    image: "assets/art/graha-tia.webp",
     url: "https://www.etsy.com/listing/1266023475/final-fantasy-xiv-light-box-gaming-room",
   },
   {
@@ -274,7 +274,7 @@ window.PUSH_PRESENT_PRODUCTS = [
     rating: "Edge-lit RGB acrylic",
     note: "A dedicated FFX wall sign with edge-lit RGB illumination for the game room.",
     specs: ["RGB edge lighting", "Wall decor", "FFX design"],
-    image: "assets/ffxiv/hero.jpg",
+    image: "assets/art/estinien.webp",
     url: "https://www.etsy.com/listing/4436435478/final-fantasy-x-led-wall-decor-sign-game",
   },
   {
@@ -286,7 +286,7 @@ window.PUSH_PRESENT_PRODUCTS = [
     rating: "Commission route",
     note: "No stable pre-made FFXI LED listing surfaced. Use this focused Etsy search to commission Vana'diel, a job emblem, or her XI character.",
     specs: ["Custom design", "Confirm proof first", "Ask for USB LED base"],
-    image: "assets/ffxiv/aymeric.jpg",
+    image: "assets/art/aymeric.webp",
     url: "https://www.etsy.com/search?q=custom+final+fantasy+xi+led+light",
   },
   {
@@ -299,7 +299,7 @@ window.PUSH_PRESENT_PRODUCTS = [
     badge: "Best Lulu Prissypants pick",
     note: "The artist draws Lulu from references and sends a digital mockup for approval before producing the mat.",
     specs: ["Original character art", "Proof before production", "Limited slots"],
-    image: "assets/ffxiv/graha-tia.jpg",
+    image: "assets/art/lulu-prissypants.jpg",
     url: "https://www.etsy.com/listing/4333426431/custom-character-desk-mat-hand-drawn",
   },
   {
@@ -311,7 +311,7 @@ window.PUSH_PRESENT_PRODUCTS = [
     rating: "Three Continents map",
     note: "A broad Eorzea and Hydaelyn map print suited to a full keyboard-and-mouse workspace.",
     specs: ["World map print", "Extended format", "Non-slip desk pad"],
-    image: "assets/ffxiv/hero.jpg",
+    image: "assets/art/graha-tia.webp",
     url: "https://www.etsy.com/listing/1638471562/ffxiv-world-map-desk-mat-three",
   },
   {
