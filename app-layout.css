@@ -360,15 +360,20 @@ main {
   touch-action: pan-x pan-y;
 }
 
-.product-card {
+.product-slide {
   flex: 0 0 clamp(300px, 32vw, 360px);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.product-card {
+  height: 100%;
   min-width: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: rgba(16, 21, 33, 0.97);
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
-  scroll-snap-align: start;
 }
 
 .product-card.is-selected {
@@ -678,7 +683,7 @@ main {
     scroll-padding-inline: 0;
   }
 
-  .product-card {
+  .product-slide {
     flex-basis: 100%;
   }
 
